@@ -1,5 +1,7 @@
 import "./AllPatients.css";
 
+import { Link } from "react-router-dom";
+
 const patients = [
 	{
 		firstname: "Kason",
@@ -45,27 +47,44 @@ const patients = [
 const AllPatients = () => {
 	return (
 		<div className="cards">
-			{patients.map((patient) => (
-				<div className="card">
-					Name: {patient.firstname} {patient.lastname}
+			{patients.map((patient, index) => (
+				<div className="card" key={index}>
+					<table>
+						<tr>
+							<td>
+								Name: {patient.firstname} {patient.lastname}
+							</td>
+						</tr>
+
+						<tr>
+							<td>Heart Rate: {patient.heart_rate} bpm</td>
+						</tr>
+
+						<tr>
+							<td>Gender: {patient.sex} </td>
+						</tr>
+
+						{patient.sys_blood_pressure &&
+							patient.dia_blood_pressure && (
+								<tr>
+									<td>
+										Blood Pressure:{" "}
+										{patient.sys_blood_pressure} /{" "}
+										{patient.dia_blood_pressure}
+									</td>
+								</tr>
+							)}
+
+						{patient.z_accel && (
+							<tr>
+								<td>
+									Z Accel: {patient.z_accel} m/s<sup>2</sup>
+								</td>
+							</tr>
+						)}
+					</table>
 					<br />
-					Age: {patient.heart_rate}
-					<br />
-					Heart Rate: {patient.heart_rate} bpm
-					<br />
-					Gender: {patient.sex}
-					<br />
-					{patient.sys_blood_pressure && patient.dia_blood_pressure && (
-						<>
-							Blood Pressure: {patient.sys_blood_pressure} /{" "}
-							{patient.dia_blood_pressure}
-						</>
-					)}
-					{patient.z_accel && (
-						<>
-							Z Accel: {patient.z_accel} m/s<sup>2</sup>
-						</>
-					)}
+					<Link to={`/patient/${patient.patient_id}`}>Details</Link>
 				</div>
 			))}
 		</div>
