@@ -1,40 +1,79 @@
 import "./Login.css";
 
+import { useNavigate } from "react-router-dom";
+
+import axiosInstance from "../axios.js";
+
+import PersonIcon from "@mui/icons-material/Person";
+
+import { InputBox, PasswordBox } from "../InputBox/InputBox.js";
+
 import { useState } from "react";
 
+import logo from "../assets/wings-logo-4.png";
+
 const Login = () => {
-	const [email, setEmail] = useState("");
+	const [username, setUsername] = useState("");
 	const [password, setPassword] = useState("");
 
-	const printVar = () => {
-		console.log(email);
-		console.log(password);
+	const [wrongCredentials, setWrongCredentials] = useState(false);
+
+	let navigate = useNavigate();
+
+	const login = (e) => {
+		e.preventDefault();
+
+		axiosInstance
+			.post(`users/login`, {
+				username,
+				password,
+			})
+			.catch(() => {
+				setWrongCredentials(true);
+			})
+			.then((res) => {
+				localStorage.setItem("user_id", res.data.user_id);
+				navigate("/", { replace: true });
+			});
 	};
 
 	return (
 		<div id="container">
-			<form id="form_login">
-				<p>
-					<input
-						type="text"
-						className="input-box"
-						placeholder="Username"
-						onChange={(e) => setEmail(e.target.value)}
-					/>
-				</p>
-				<p>
-					<input
-						type="password"
-						className="input-box"
-						placeholder="Password"
-						onChange={(e) => setPassword(e.target.value)}
-					/>
-				</p>
-				<p>
-					<button type="button" onClick={printVar}>
-						Log In
-					</button>
-				</p>
+			<img id="logo-image" src={logo} alt="Logo" />
+
+			{wrongCredentials && (
+				<h3 id="wrong-credentials">
+					Incorrect username or password, please try again.
+				</h3>
+			)}
+
+			<form>
+				<InputBox
+					classNamee="login-input"
+					type="text"
+					name="username"
+					placeholder="User Name"
+					setValue={setUsername}
+					icon={<PersonIcon className="input-icon" />}
+				/>
+
+				<br />
+
+				<PasswordBox
+					classNamee="login-input"
+					name="password"
+					setValue={setPassword}
+				/>
+
+				<br />
+
+				<button
+					id="login-button"
+					type="button"
+					onClick={(e) => login(e)}
+				>
+					Log In
+				</button>
 			</form>
 		</div>
 	);

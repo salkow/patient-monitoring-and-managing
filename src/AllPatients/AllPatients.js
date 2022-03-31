@@ -1,8 +1,12 @@
 import "./AllPatients.css";
 
+import axiosInstance from "../axios";
+
 import { Link } from "react-router-dom";
 
-const patients = [
+import { useEffect, useState } from "react";
+
+const patients1 = [
 	{
 		firstname: "Kason",
 		lastname: "Frye",
@@ -45,6 +49,18 @@ const patients = [
 ];
 
 const AllPatients = () => {
+	const [patients, setPatients] = useState([]);
+
+	useEffect(() => {
+		let user_id = localStorage.getItem("user_id");
+
+		// TODO: Set user_id from login.
+
+		axiosInstance.get(`patients?user_id=18`).then((res) => {
+			setPatients(res.data);
+		});
+	}, []);
+
 	return (
 		<div className="cards">
 			{patients.map((patient, index) => (
@@ -90,6 +106,8 @@ const AllPatients = () => {
 					<Link to={`/patient/${patient.patient_id}`}>Details</Link>
 				</div>
 			))}
+
+			<Link to={"/add-patient/"}>Add Patient</Link>
 		</div>
 	);
 };

@@ -1,0 +1,17 @@
+#container {
+    display: flex;        
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;     
+    height: 500px;
+}
+
+.input-box
+{
+	padding: 10px
+}
+
+.input-icon
+{
+  padding: 0.5rem;
+}

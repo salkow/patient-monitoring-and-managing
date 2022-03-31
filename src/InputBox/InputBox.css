@@ -1,0 +1,32 @@
+.input-container {
+	display: inline-flex;
+	flex: 1 1 300px;
+	position: relative;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	overflow: hidden;
+	margin: 10px;
+}
+
+.input-item {
+	border: 0;
+	padding: 0.5rem 0.5rem 0.5rem 0;
+	flex: 1;
+	/* width: 60vw; */
+	/* border: 1px solid blue; */
+	/* max-width: 500px; */
+}
+
+/* @media screen and (min-width: 40em) {
+	.input-item {
+		border: 1px solid red;
+		width: 60vw;
+	}
+}
+
+@media screen and (min-width: 60em) {
+	.input-item {
+		border: 1px solid black;
+		width: 60vw;
+	}
+} */
