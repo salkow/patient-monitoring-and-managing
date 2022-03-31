@@ -50,38 +50,41 @@ const AllPatients = () => {
 			{patients.map((patient, index) => (
 				<div className="card" key={index}>
 					<table>
-						<tr>
-							<td>
-								Name: {patient.firstname} {patient.lastname}
-							</td>
-						</tr>
+						<tbody>
+							<tr>
+								<td>
+									Name: {patient.firstname} {patient.lastname}
+								</td>
+							</tr>
 
-						<tr>
-							<td>Heart Rate: {patient.heart_rate} bpm</td>
-						</tr>
+							<tr>
+								<td>Heart Rate: {patient.heart_rate} bpm</td>
+							</tr>
 
-						<tr>
-							<td>Gender: {patient.sex} </td>
-						</tr>
+							<tr>
+								<td>Gender: {patient.sex} </td>
+							</tr>
 
-						{patient.sys_blood_pressure &&
-							patient.dia_blood_pressure && (
+							{patient.sys_blood_pressure &&
+								patient.dia_blood_pressure && (
+									<tr>
+										<td>
+											Blood Pressure:{" "}
+											{patient.sys_blood_pressure} /{" "}
+											{patient.dia_blood_pressure}
+										</td>
+									</tr>
+								)}
+
+							{patient.z_accel && (
 								<tr>
 									<td>
-										Blood Pressure:{" "}
-										{patient.sys_blood_pressure} /{" "}
-										{patient.dia_blood_pressure}
+										Z Accel: {patient.z_accel} m/s
+										<sup>2</sup>
 									</td>
 								</tr>
 							)}
-
-						{patient.z_accel && (
-							<tr>
-								<td>
-									Z Accel: {patient.z_accel} m/s<sup>2</sup>
-								</td>
-							</tr>
-						)}
+						</tbody>
 					</table>
 					<br />
 					<Link to={`/patient/${patient.patient_id}`}>Details</Link>
