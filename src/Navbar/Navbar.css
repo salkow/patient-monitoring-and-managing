@@ -1,0 +1,18 @@
+#nav {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+
+	background-color: beige;
+	height: 3em;
+	margin-bottom: 1em
+}
+
+.hor-center {
+	margin-top: auto;
+	margin-bottom: auto;
+}
+
+.point-cursor {
+	cursor: pointer;
+}
