@@ -1,29 +1,26 @@
-.cards {
+.all-patient-cards {
 	display: flex;
 	flex-wrap: wrap;
+	justify-content: center;
 }
 
-.card {
-	flex: 1 0 500px;
-	box-sizing: border-box;
-	margin: 1rem 0.25em;
-	background-color: antiquewhite;
+.add-patient-container {
+	display: flex;
 }
 
-@media screen and (min-width: 40em) {
-	.card {
-		max-width: calc(50% - 1em);
-		border: 2px solid green;
-	}
+.right {
+	margin-left: auto;
+	background-color: blue;
+	color: rgb(243, 243, 243);
+	padding: 12px;
 }
 
-@media screen and (min-width: 60em) {
-	.card {
-		max-width: calc(25% - 1em);
-		border: 2px solid blue;
-	}
+.no-u
+{
+	text-decoration: none;	
 }
 
-td {
-	border: 1px solid black;
+.hide
+{
+	display: none;	
 }

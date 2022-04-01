@@ -1,0 +1,55 @@
+.all-patient-card {
+	box-sizing: border-box;
+	margin: 1rem;
+    background-color: rgb(228, 228, 228);
+	width: 20rem;
+	height: 19.5rem;
+	box-shadow: 0 0 3px #888888;
+	padding: 1.5rem;
+
+	border-width: 0;
+
+	display: flex;
+	justify-content: top;
+	flex-direction: column;
+}
+
+.rounded-corners
+{
+	border-radius: 15px;
+}
+
+.shadow
+{
+	box-shadow: 0 0 5px black;
+}
+
+.all-patient-card-icon {
+	top: 6px;
+	position: relative;
+}
+
+.patient-card-key {
+	margin-left: 3px;
+	color: rgb(87, 87, 87);
+}
+
+.patient-card-line {
+	border: 1px solid grey;
+	width: 100%;
+	margin-top: 1rem;
+}
+
+.center-text {
+	text-align: center;
+}
+
+.bm1-5 {
+	margin-bottom: 1.5rem;
+}
+
+.bottom-right {
+	display: flex;
+    justify-content: flex-end;
+    margin-top: auto
+}
