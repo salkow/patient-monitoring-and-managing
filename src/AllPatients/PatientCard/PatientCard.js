@@ -66,7 +66,7 @@ const PatientCard = ({
 
 			<div className="bottom-right">
 				<Link to={`patient/${patient_id}`}>
-					<Avatar sx={{ bgcolor: "blue" }} className="shadow">
+					<Avatar sx={{ bgcolor: "#405cf9" }} className="shadow">
 						<ListIcon />
 					</Avatar>
 				</Link>

@@ -2,6 +2,8 @@ import "./Patient.css";
 
 import Chart from "./Chart/Chart.js";
 
+import Title from "../Title/Title.js";
+
 import { useParams, Link } from "react-router-dom";
 
 const patient = {
@@ -57,7 +59,8 @@ const Patient = () => {
 
 	return (
 		<div>
-			<Link to="/">Back</Link>
+			<Title text={`Patient: ${info[0].firstname} ${info[0].lastname}`} />
+
 			<div className="cards">
 				<div className="card">
 					Heart Rate: {patient.heart_rate[0].heart_rate} bpm
@@ -91,7 +94,7 @@ const Patient = () => {
 				</div>
 			</div>
 
-			<Chart />
+			{/* <Chart /> */}
 		</div>
 	);
 };

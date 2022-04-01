@@ -1,25 +1,37 @@
 .cards {
 	display: flex;
 	flex-wrap: wrap;
+	flex-direction: row;
+	text-align: center;
+	justify-content: center;
 }
 
 .card {
-	flex: 1 0 500px;
+	/* flex: 1 0 500px; */
 	box-sizing: border-box;
-	margin: 1rem 0.25em;
-	background-color: antiquewhite;
+	margin: 1rem 0.25em 0 2em;
+
+	padding: 1em;
+
+	background-color: rgb(228, 228, 228);
+
+	width: 19rem;
+
+	box-shadow: 0 0 3px #888888;
 }
 
-@media screen and (min-width: 40em) {
-	.card {
-		max-width: calc(50% - 1em);
-		border: 2px solid green;
-	}
-}
+.kall-patient-card {
+	box-sizing: border-box;
+	margin: 1rem;
+	background-color: rgb(228, 228, 228);
+	width: 20rem;
+	height: 19.5rem;
+	box-shadow: 0 0 3px #888888;
+	padding: 1.5rem;
 
-@media screen and (min-width: 60em) {
-	.card {
-		max-width: calc(25% - 1em);
-		border: 2px solid blue;
-	}
+	border-width: 0;
+
+	display: flex;
+	justify-content: top;
+	flex-direction: column;
 }

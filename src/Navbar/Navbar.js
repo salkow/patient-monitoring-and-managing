@@ -1,6 +1,8 @@
 import "./Navbar.css";
 
-import { Link, useNavigate } from "react-router-dom";
+import logo from "../assets/wings-logo-4.png";
+
+import { useNavigate } from "react-router-dom";
 import LogoutTwoToneIcon from "@mui/icons-material/LogoutTwoTone";
 import ArrowBackIosNewTwoToneIcon from "@mui/icons-material/ArrowBackIosNewTwoTone";
 
@@ -13,13 +15,17 @@ const Navbar = () => {
 				onClick={() => {
 					navigate(-1);
 				}}
-				className="hor-center point-cursor"
+				className="hor-center point-cursor nav-button"
 				to="/"
 			>
-				<ArrowBackIosNewTwoToneIcon />
+				<ArrowBackIosNewTwoToneIcon className="all-patient-card-icon" />
+				Go back
 			</div>
-			<div className="hor-center point-cursor" to="dashboard">
-				<LogoutTwoToneIcon />
+
+			<img className="logo-image" src={logo} alt="Logo" />
+
+			<div className="hor-center point-cursor nav-button">
+				<LogoutTwoToneIcon className="all-patient-card-icon" /> Log Out
 			</div>
 		</nav>
 	);

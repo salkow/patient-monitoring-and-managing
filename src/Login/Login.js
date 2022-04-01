@@ -1,5 +1,7 @@
 import "./Login.css";
 
+import Title from "../Title/Title.js";
+
 import { useNavigate } from "react-router-dom";
 
 import axiosInstance from "../axios.js";
@@ -40,6 +42,8 @@ const Login = () => {
 	return (
 		<div id="container">
 			<img id="logo-image" src={logo} alt="Logo" />
+
+			<Title text="Login" />
 
 			{wrongCredentials && (
 				<h3 id="wrong-credentials">

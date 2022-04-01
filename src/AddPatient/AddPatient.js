@@ -2,6 +2,8 @@ import "./AddPatient.css";
 
 import { InputBox, MultipleChoiceBox, DateBox } from "../InputBox/InputBox.js";
 
+import Title from "../Title/Title.js";
+
 import { useState } from "react";
 
 import LocalHospitalTwoToneIcon from "@mui/icons-material/LocalHospitalTwoTone";
@@ -57,6 +59,8 @@ const AddPatient = () => {
 
 	return (
 		<div id="container">
+			<Title text="Add Patient" />
+
 			<form className="add-patient-form">
 				<div className="group-items">
 					<InputBox
@@ -162,17 +166,15 @@ const AddPatient = () => {
 						icon={<LocalPhoneIcon className="input-icon" />}
 					/>
 				</div>
-				<p>
-					<div style={{ textAlign: "center" }}>
-						<button
-							className="login-button"
-							type="button"
-							onClick={printVar}
-						>
-							Add Patient
-						</button>
-					</div>
-				</p>
+				<div style={{ textAlign: "center" }}>
+					<button
+						className="login-button"
+						type="button"
+						onClick={printVar}
+					>
+						Add Patient
+					</button>
+				</div>
 			</form>
 		</div>
 	);

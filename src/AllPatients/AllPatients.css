@@ -6,12 +6,11 @@
 
 .add-patient-container {
 	display: flex;
+	justify-content: center;
 }
 
+/* Fix this */
 .right {
-	margin-left: auto;
-	background-color: blue;
-	color: rgb(243, 243, 243);
 	padding: 12px;
 }
 

@@ -1,5 +1,7 @@
 import "./AllPatients.css";
 
+import Title from "../Title/Title.js";
+
 import axiosInstance from "../axios";
 
 import PatientCard from "./PatientCard/PatientCard.js";
@@ -25,10 +27,13 @@ const AllPatients = () => {
 
 	return (
 		<div>
+			<Title text="All Patients" />
+
 			<div className="add-patient-container">
 				<Link
-					className="right shadow rounded-corners no-u"
+					className="right nav-button no-u"
 					to={"/add-patient/"}
+					style={{ width: "8em", paddingBottom: "1em" }}
 				>
 					<PersonAddTwoToneIcon className="all-patient-card-icon" />{" "}
 					Add Patient
