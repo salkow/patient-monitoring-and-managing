@@ -9,7 +9,7 @@
 	padding: 10px;
 }
 
-#login-button {
+.login-button {
 	background-color: #405cf9;
 	border-radius: 6px;
 	border-width: 0;

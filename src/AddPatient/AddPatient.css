@@ -1,17 +1,54 @@
 #container {
-    display: flex;        
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;     
-    height: 500px;
+	display: flex;
+	flex-direction: column;
+
+	/* align-items: stretch; */
+	/* align-content: stretch; */
+	/* justify-content: flex-start; */
+	/* align-items: center; */
+	/* flex-wrap:wrap; */
+	/* width: 100%; */
+
+	/* width: 90vw; */
+
+	/* flex-flow: column wrap; */
+
+	/* flex: 1; */
 }
 
-.input-box
-{
-	padding: 10px
+.input-box {
+	padding: 10px;
 }
 
-.input-icon
-{
-  padding: 0.5rem;
+.input-icon {
+	padding: 0.5rem;
+}
+
+.group-items {
+	display: flex;
+
+	/* display: inline-block; */
+
+	/* justify-content: left; */
+
+	/* align-items: stretch;
+		align-content: stretch; */
+
+	/* flex-wrap: wrap; */
+
+	/* min-width: 500px; */
+
+	/* flex-direction: row; */
+
+	flex-flow: row wrap;
+
+	/* width: 90vw;	 */
+
+	/* width: 100%; */
+
+	/* flex: 1; */
+}
+
+.add-patient-form {
+	/* width: 100%; */
 }

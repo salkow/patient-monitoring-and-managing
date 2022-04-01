@@ -6,18 +6,41 @@ import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
 
 import { useState } from "react";
 
-const InputBox = ({ type, name, placeholder, setValue, icon, classNamee }) => {
+const InputBox = ({ type, name, placeholder, setValue, icon }) => {
 	return (
 		<div className="input-container">
 			{icon}
 			<input
-				className={classNamee + " input-item"}
-				style={{ padding: "0.5em" }}
+				required
+				className="input-item"
 				type={type}
 				name={name}
 				placeholder={placeholder}
 				onChange={(e) => setValue(e.target.value)}
 			/>
+		</div>
+	);
+};
+
+const MultipleChoiceBox = ({ name, placeholder, setValue, icon, options }) => {
+	return (
+		<div className="input-container">
+			{icon}
+			<select
+				defaultValue={placeholder}
+				name={name}
+				className="input-item select-item white"
+				onChange={(e) => setValue(e.target.value)}
+			>
+				<option disabled className="hide">
+					{placeholder}
+				</option>
+				{Object.entries(options).map(([key, value]) => (
+					<option value={key} key={key}>
+						{value}
+					</option>
+				))}
+			</select>
 		</div>
 	);
 };
@@ -62,4 +85,4 @@ const PasswordBox = ({ name, setValue, classNamee }) => {
 	);
 };
 
-export { InputBox, PasswordBox };
+export { InputBox, PasswordBox, MultipleChoiceBox };

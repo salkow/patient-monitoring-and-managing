@@ -69,7 +69,7 @@ const Login = () => {
 
 				<div style={{ textAlign: "center" }}>
 					<button
-						id="login-button"
+						className="login-button"
 						type="button"
 						onClick={(e) => login(e)}
 					>
