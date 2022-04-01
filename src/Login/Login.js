@@ -67,13 +67,15 @@ const Login = () => {
 
 				<br />
 
-				<button
-					id="login-button"
-					type="button"
-					onClick={(e) => login(e)}
-				>
-					Log In
-				</button>
+				<div style={{ textAlign: "center" }}>
+					<button
+						id="login-button"
+						type="button"
+						onClick={(e) => login(e)}
+					>
+						Log In
+					</button>
+				</div>
 			</form>
 		</div>
 	);
