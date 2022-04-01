@@ -2,12 +2,14 @@ import AllPatients from "./AllPatients/AllPatients.js";
 import Patient from "./Patient/Patient.js";
 import Login from "./Login/Login.js";
 import AddPatient from "./AddPatient/AddPatient.js";
+import Navbar from "./Navbar/Navbar.js";
 
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 
 function App() {
 	return (
 		<BrowserRouter>
+			<Navbar />
 			<Routes>
 				<Route path="/" element={<AllPatients />} />
 				<Route path="/login" element={<Login />} />
