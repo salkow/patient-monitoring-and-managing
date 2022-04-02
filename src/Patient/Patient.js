@@ -2,6 +2,8 @@ import "./Patient.css";
 
 import Chart from "./Chart/Chart.js";
 
+import axiosInstance from "../axios.js";
+
 import Accordion from "../Accordion/Accordion.js";
 
 import PatientStat from "./PatientStat/PatientStat.js";
@@ -15,33 +17,30 @@ import { useParams } from "react-router-dom";
 import MonitorHeartIcon from "@mui/icons-material/MonitorHeart";
 import BloodtypeIcon from "@mui/icons-material/Bloodtype";
 import DeviceThermostatTwoToneIcon from "@mui/icons-material/DeviceThermostatTwoTone";
-
-const info = {
-	patient_id: 11,
-	email: "jsmith@gmail.com",
-	conditions: ["Heart", "Liver"],
-	sex: "Male",
-	address_street: "Syggrou",
-	address_number: "189",
-	address_city: "Athens",
-	address_postalcode: "17673",
-	firstname: "John",
-	lastname: "Smith",
-	phonenumber: "6991614152",
-	age: 40,
-	facility: {
-		facility_id: 1,
-		facility_name: "KAPH DIMOU VYRONA",
-		facility_address: "AGIAS TRIADAS 13",
-	},
-};
+import { useEffect, useState } from "react";
 
 const Patient = () => {
 	const params = useParams();
 
+	const [info, setInfo] = useState();
+
+	useEffect(() => {
+		const patient_id = params.id;
+
+		axiosInstance
+			.get(`patients?patient_id=${patient_id}&details=true`)
+			.then((res) => {
+				setInfo(res.data[0]);
+			});
+
+		// TODO: Set user_id from login.
+	}, []);
+
 	return (
 		<div>
-			<Title text={`Patient: ${info.firstname} ${info.lastname}`} />
+			{info && (
+				<Title text={`Patient: ${info.firstname} ${info.lastname}`} />
+			)}
 
 			<div className="cards">
 				{latestValues.heart_rate && (
