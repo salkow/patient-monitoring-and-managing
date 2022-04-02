@@ -14,8 +14,6 @@ const Chart = ({ data, value_name_color }) => {
 		<div className="chart">
 			<ResponsiveContainer width="100%" height={300}>
 				<LineChart
-					width={1500}
-					height={300}
 					data={data}
 					margin={{
 						top: 5,
