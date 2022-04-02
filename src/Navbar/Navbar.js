@@ -16,7 +16,6 @@ const Navbar = () => {
 					navigate(-1);
 				}}
 				className="hor-center point-cursor nav-button"
-				to="/"
 			>
 				<ArrowBackIosNewTwoToneIcon className="all-patient-card-icon" />
 				Go back

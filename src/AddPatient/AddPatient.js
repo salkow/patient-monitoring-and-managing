@@ -1,10 +1,14 @@
 import "./AddPatient.css";
 
-import { InputBox, MultipleChoiceBox, DateBox } from "../InputBox/InputBox.js";
+import axiosInstance from "../axios";
+
+import { InputBox, MultipleChoiceBox } from "../InputBox/InputBox.js";
 
 import Title from "../Title/Title.js";
 
-import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
+import { useState, useEffect } from "react";
 
 import LocalHospitalTwoToneIcon from "@mui/icons-material/LocalHospitalTwoTone";
 import CalendarTodayTwoToneIcon from "@mui/icons-material/CalendarTodayTwoTone";
@@ -29,16 +33,24 @@ let fac = [
 	},
 ];
 
-const AddPatient = () => {
+const AddPatient = ({ setPatients }) => {
+	useEffect(() => {
+		axiosInstance.get("facilities").then((res) => {
+			setAllFacilities(res.data);
+		});
+	}, []);
+
 	const parseFacilities = () => {
 		let facilities = {};
 
-		fac.map((facility) => {
+		allFacilities.map((facility) => {
 			facilities[facility.facility_id] = facility.facility_name;
 		});
 
 		return facilities;
 	};
+
+	const [allFacilities, setAllFacilities] = useState([]);
 
 	const [firstName, setFirstName] = useState("");
 	const [lastName, setLastName] = useState("");
@@ -51,10 +63,15 @@ const AddPatient = () => {
 	const [phone, setPhone] = useState("");
 	const [sex, setSex] = useState("");
 	const [age, setAge] = useState("");
+	const [facility, setFacility] = useState("");
 
-	const printVar = () => {
-		// console.log(firstName);
-		// console.log(lastName);
+	let navigate = useNavigate();
+
+	const addPatient = (e) => {
+		e.preventDefault();
+
+		setPatients();
+		navigate("/", { replace: true });
 	};
 
 	return (
@@ -78,7 +95,6 @@ const AddPatient = () => {
 						icon={<PersonIcon className="input-icon" />}
 					/>
 				</div>
-
 				<div className="group-items">
 					<InputBox
 						type="email"
@@ -91,14 +107,13 @@ const AddPatient = () => {
 					<MultipleChoiceBox
 						name="Facility Name"
 						placeholder="Facility Name *"
-						setValue={setSex}
+						setValue={setFacility}
 						icon={
 							<LocalHospitalTwoToneIcon className="input-icon" />
 						}
 						options={parseFacilities()}
 					/>
 				</div>
-
 				<div className="group-items">
 					<InputBox
 						type="text"
@@ -131,7 +146,6 @@ const AddPatient = () => {
 						icon={<HomeTwoToneIcon className="input-icon" />}
 					/>
 				</div>
-
 				<div className="group-items">
 					<InputBox
 						type="number"
@@ -166,11 +180,22 @@ const AddPatient = () => {
 						icon={<LocalPhoneIcon className="input-icon" />}
 					/>
 				</div>
+
+				<div
+					style={{
+						color: "#737573",
+						margin: "10px",
+					}}
+				>
+					Every field with * is required.
+				</div>
 				<div style={{ textAlign: "center" }}>
 					<button
 						className="login-button"
 						type="button"
-						onClick={printVar}
+						onClick={(e) => {
+							addPatient(e);
+						}}
 					>
 						Add Patient
 					</button>

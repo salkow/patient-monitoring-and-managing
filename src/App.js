@@ -26,7 +26,10 @@ function App() {
 					}
 				/>
 				<Route path="/patient/:id" element={<Patient />} />
-				<Route path="/add-patient" element={<AddPatient />} />
+				<Route
+					path="/add-patient"
+					element={<AddPatient setPatients={setPatients} />}
+				/>
 			</Routes>
 		</BrowserRouter>
 	);
