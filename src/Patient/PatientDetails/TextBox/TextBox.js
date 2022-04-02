@@ -1,11 +1,13 @@
 import "./TextBox.css";
 
-const TextBox = ({ text, icon }) => {
+const TextBox = ({ description, text, icon }) => {
 	return (
-		<div className="input-container">
+		<div className="input-container flex-center">
 			{icon}
 			<div style={{ paddingTop: "10px" }} className="input-item">
-				{text}
+				{description}
+				{": "}
+				<span style={{ color: "black" }}>{text}</span>
 			</div>
 		</div>
 	);
