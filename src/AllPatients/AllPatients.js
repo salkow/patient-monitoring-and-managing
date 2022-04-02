@@ -8,21 +8,21 @@ import PatientCard from "./PatientCard/PatientCard.js";
 
 import { Link } from "react-router-dom";
 
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 import PersonAddTwoToneIcon from "@mui/icons-material/PersonAddTwoTone";
 
-const AllPatients = () => {
-	const [patients, setPatients] = useState([]);
-
+const AllPatients = ({ patients, setPatients }) => {
 	useEffect(() => {
-		let user_id = localStorage.getItem("user_id");
+		if (!patients) {
+			let user_id = localStorage.getItem("user_id");
 
-		// TODO: Set user_id from login.
+			// TODO: Set user_id from login.
 
-		axiosInstance.get(`patients?user_id=18`).then((res) => {
-			setPatients(res.data);
-		});
+			axiosInstance.get(`patients?user_id=18`).then((res) => {
+				setPatients(res.data);
+			});
+		}
 	}, []);
 
 	return (
@@ -39,21 +39,23 @@ const AllPatients = () => {
 					Add Patient
 				</Link>
 			</div>
-			<div className="all-patient-cards">
-				{patients.map((patient) => (
-					<PatientCard
-						key={patient.patient_id}
-						patient_id={patient.patient_id}
-						firstName={patient.firstname}
-						lastName={patient.lastname}
-						heart_rate={patient.heart_rate}
-						sex={patient.sex}
-						sys_blood_pressure={patient.sys_blood_pressure}
-						dia_blood_pressure={patient.dia_blood_pressure}
-						z_accel={patient.z_accel}
-					/>
-				))}
-			</div>
+			{patients && (
+				<div className="all-patient-cards">
+					{patients.map((patient) => (
+						<PatientCard
+							key={patient.patient_id}
+							patient_id={patient.patient_id}
+							firstName={patient.firstname}
+							lastName={patient.lastname}
+							heart_rate={patient.heart_rate}
+							sex={patient.sex}
+							sys_blood_pressure={patient.sys_blood_pressure}
+							dia_blood_pressure={patient.dia_blood_pressure}
+							z_accel={patient.z_accel}
+						/>
+					))}
+				</div>
+			)}
 		</div>
 	);
 };
