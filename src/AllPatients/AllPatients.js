@@ -6,18 +6,22 @@ import axiosInstance from "../axios";
 
 import PatientCard from "./PatientCard/PatientCard.js";
 
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import { useEffect } from "react";
 
 import PersonAddTwoToneIcon from "@mui/icons-material/PersonAddTwoTone";
 
 const AllPatients = ({ patients, setPatients }) => {
+	let navigate = useNavigate();
+
 	useEffect(() => {
 		if (!patients) {
 			let user_id = localStorage.getItem("user_id");
 
-			// TODO: Set user_id from login.
+			if (!user_id) {
+				navigate("/login", { replace: true });
+			}
 
 			axiosInstance.get(`patients?user_id=18`).then((res) => {
 				setPatients(res.data);
