@@ -2,7 +2,7 @@ import "./Navbar.css";
 
 import logo from "../assets/wings-logo-4.png";
 
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import LogoutTwoToneIcon from "@mui/icons-material/LogoutTwoTone";
 import ArrowBackIosNewTwoToneIcon from "@mui/icons-material/ArrowBackIosNewTwoTone";
 
@@ -21,7 +21,9 @@ const Navbar = () => {
 				Go back
 			</div>
 
-			<img className="logo-image" src={logo} alt="Logo" />
+			<Link to="/">
+				<img className="logo-image" src={logo} alt="Logo" />
+			</Link>
 
 			<div className="hor-center point-cursor nav-button">
 				<LogoutTwoToneIcon className="all-patient-card-icon" /> Log Out
