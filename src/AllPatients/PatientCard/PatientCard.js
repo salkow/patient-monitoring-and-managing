@@ -66,7 +66,14 @@ const PatientCard = ({
 
 			<div className="bottom-right">
 				<Link to={`patient/${patient_id}`}>
-					<Avatar sx={{ bgcolor: "#405cf9" }} className="shadow">
+					<Avatar
+						sx={{
+							bgcolor: "#405cf9",
+							"&:hover": { bgcolor: "#4e68fa" },
+						}}
+						alt="Details Button"
+						className="shadow"
+					>
 						<ListIcon />
 					</Avatar>
 				</Link>

@@ -2,8 +2,6 @@
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
-
-	/* background-color: beige; */
 	height: 3em;
 	margin-bottom: 1em
 }
@@ -16,6 +14,12 @@
 .point-cursor {
 	cursor: pointer;
 }
+
+.nav-button:hover
+{
+	background-color: #4e68fa;
+}
+
 
 .nav-button {
 	background-color: #405cf9;
