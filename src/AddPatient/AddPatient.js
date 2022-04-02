@@ -61,7 +61,7 @@ const AddPatient = () => {
 		<div id="container">
 			<Title text="Add Patient" />
 
-			<form className="add-patient-form">
+			<form>
 				<div className="group-items">
 					<InputBox
 						type="text"
