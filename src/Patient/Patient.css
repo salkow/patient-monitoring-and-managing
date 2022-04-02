@@ -6,32 +6,26 @@
 	justify-content: center;
 }
 
-.card {
-	/* flex: 1 0 500px; */
-	box-sizing: border-box;
-	margin: 1rem 0.25em 0 2em;
-
-	padding: 1em;
-
-	background-color: rgb(228, 228, 228);
-
-	width: 19rem;
-
-	box-shadow: 0 0 3px #888888;
+.charts {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	/* text-align: center; */
 }
 
-.kall-patient-card {
-	box-sizing: border-box;
-	margin: 1rem;
-	background-color: rgb(228, 228, 228);
-	width: 20rem;
-	height: 19.5rem;
-	box-shadow: 0 0 3px #888888;
-	padding: 1.5rem;
+.chart {
+	width: 100%;
+}
 
-	border-width: 0;
+@media screen and (min-width: 40em) {
+	.chart {
+		width: 100vw;
+	}
+}
 
-	display: flex;
-	justify-content: top;
-	flex-direction: column;
+@media screen and (min-width: 60em) {
+	.chart {
+		width: 80vw;
+	}
 }
