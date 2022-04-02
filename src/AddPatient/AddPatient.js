@@ -53,8 +53,8 @@ const AddPatient = () => {
 	const [age, setAge] = useState("");
 
 	const printVar = () => {
-		console.log(firstName);
-		console.log(lastName);
+		// console.log(firstName);
+		// console.log(lastName);
 	};
 
 	return (

@@ -58,13 +58,15 @@ const PatientDetails = ({ info }) => {
 						/>
 					</div>
 
-					<div className="group-items">
-						<TextBox
-							description={"Conditions"}
-							text={info.conditions.join(", ")}
-							icon={<HealingIcon className="input-icon" />}
-						/>
-					</div>
+					{info.conditions && (
+						<div className="group-items">
+							<TextBox
+								description={"Conditions"}
+								text={info.conditions.join(", ")}
+								icon={<HealingIcon className="input-icon" />}
+							/>
+						</div>
+					)}
 				</>
 			)}
 		</div>

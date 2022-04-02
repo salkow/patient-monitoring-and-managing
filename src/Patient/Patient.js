@@ -24,6 +24,8 @@ const Patient = () => {
 
 	const [info, setInfo] = useState();
 
+	const [latestValues, setLatestValues] = useState();
+
 	useEffect(() => {
 		const patient_id = params.id;
 
@@ -31,6 +33,14 @@ const Patient = () => {
 			.get(`patients?patient_id=${patient_id}&details=true`)
 			.then((res) => {
 				setInfo(res.data[0]);
+			});
+
+		axiosInstance
+			.get(
+				`realmeasurements?patient_id=${patient_id}&detail=second&lastvalues=1`
+			)
+			.then((res) => {
+				setLatestValues(res.data);
 			});
 
 		// TODO: Set user_id from login.
@@ -42,44 +52,46 @@ const Patient = () => {
 				<Title text={`Patient: ${info.firstname} ${info.lastname}`} />
 			)}
 
-			<div className="cards">
-				{latestValues.heart_rate && (
-					<PatientStat
-						icon={
-							<MonitorHeartIcon className="all-patient-card-icon" />
-						}
-						text={`Heart Rate: ${latestValues.heart_rate[0].heart_rate} bpm`}
-					/>
-				)}
-
-				{latestValues.bloodpressure && (
-					<>
+			{latestValues && (
+				<div className="cards">
+					{latestValues.heart_rate && (
 						<PatientStat
 							icon={
-								<BloodtypeIcon className="all-patient-card-icon" />
+								<MonitorHeartIcon className="all-patient-card-icon" />
 							}
-							text={`SYS Blood Pressure: ${latestValues.bloodpressure[0].sys_blood_pressure} mm/Hg`}
+							text={`Heart Rate: ${latestValues.heart_rate[0].heart_rate} bpm`}
 						/>
+					)}
 
+					{latestValues.bloodpressure && (
+						<>
+							<PatientStat
+								icon={
+									<BloodtypeIcon className="all-patient-card-icon" />
+								}
+								text={`SYS Blood Pressure: ${latestValues.bloodpressure[0].sys_blood_pressure} mm/Hg`}
+							/>
+
+							<PatientStat
+								icon={
+									<BloodtypeIcon className="all-patient-card-icon" />
+								}
+								text={`DIA Blood Pressure: ${latestValues.bloodpressure[0].dia_blood_pressure} mm/Hg`}
+							/>
+						</>
+					)}
+
+					{latestValues.temperature && (
 						<PatientStat
 							icon={
-								<BloodtypeIcon className="all-patient-card-icon" />
+								<DeviceThermostatTwoToneIcon className="all-patient-card-icon" />
 							}
-							text={`DIA Blood Pressure: ${latestValues.bloodpressure[0].dia_blood_pressure} mm/Hg`}
-						/>
-					</>
-				)}
-
-				{latestValues.temperature && (
-					<PatientStat
-						icon={
-							<DeviceThermostatTwoToneIcon className="all-patient-card-icon" />
-						}
-						text={`Temperature: 
+							text={`Temperature: 
 							${latestValues.temperature[0].temperature} °C`}
-					/>
-				)}
-			</div>
+						/>
+					)}
+				</div>
+			)}
 
 			<div className="charts">
 				{pastDaysValues["heart_rate"] && (
@@ -133,31 +145,31 @@ const Patient = () => {
 
 export default Patient;
 
-const latestValues = {
-	heart_rate: [
-		{
-			timestamp: "2021-11-11 12:19:46",
-			patient_id: 11,
-			heart_rate: "80",
-		},
-	],
-	bloodpressure: [
-		{
-			timestamp: "2021-11-11 12:19:46",
-			patient_id: 11,
-			sys_blood_pressure: "156",
-			dia_blood_pressure: "120",
-		},
-	],
-	temperature: [
-		{
-			timestamp: "2021-11-22 18:13:25",
-			patient_id: 11,
-			temperature: "36.3",
-		},
-	],
-	patient_id: 11,
-};
+// const latestValues = {
+// 	heart_rate: [
+// 		{
+// 			timestamp: "2021-11-11 12:19:46",
+// 			patient_id: 11,
+// 			heart_rate: "80",
+// 		},
+// 	],
+// 	bloodpressure: [
+// 		{
+// 			timestamp: "2021-11-11 12:19:46",
+// 			patient_id: 11,
+// 			sys_blood_pressure: "156",
+// 			dia_blood_pressure: "120",
+// 		},
+// 	],
+// 	temperature: [
+// 		{
+// 			timestamp: "2021-11-22 18:13:25",
+// 			patient_id: 11,
+// 			temperature: "36.3",
+// 		},
+// 	],
+// 	patient_id: 11,
+// };
 
 const pastDaysValues = {
 	heart_rate: [

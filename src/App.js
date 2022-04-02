@@ -7,10 +7,6 @@ import Navbar from "./Navbar/Navbar.js";
 import { Routes, Route, BrowserRouter, useLocation } from "react-router-dom";
 
 function App() {
-	{
-		console.log(window.location.pathname);
-	}
-
 	return (
 		<BrowserRouter>
 			{window.location.pathname !== "/login" && <Navbar />}
