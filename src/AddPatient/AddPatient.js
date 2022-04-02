@@ -20,19 +20,6 @@ import FaceIcon from "@mui/icons-material/Face";
 import LocalPhoneIcon from "@mui/icons-material/LocalPhone";
 import HomeTwoToneIcon from "@mui/icons-material/HomeTwoTone";
 
-let fac = [
-	{
-		facility_id: 1,
-		facility_name: "KAPH DIMOU VYRONA",
-		facility_address: "AGIAS TRIADAS 13",
-	},
-	{
-		facility_id: 2,
-		facility_name: "SAPH DIMOU VYRONA",
-		facility_address: "GAGIAS TRIADAS 13",
-	},
-];
-
 const AddPatient = ({ setPatients }) => {
 	useEffect(() => {
 		axiosInstance.get("facilities").then((res) => {
@@ -52,26 +39,59 @@ const AddPatient = ({ setPatients }) => {
 
 	const [allFacilities, setAllFacilities] = useState([]);
 
-	const [firstName, setFirstName] = useState("");
-	const [lastName, setLastName] = useState("");
-	const [email, setEmail] = useState("");
+	const [firstName, setFirstName] = useState();
+	const [lastName, setLastName] = useState();
+	const [email, setEmail] = useState();
 	const [street, setStreet] = useState("");
-	const [number, setNumber] = useState("");
-	const [city, setCity] = useState("");
-	const [postalCode, setPostalCode] = useState("");
-	const [amka, setAmka] = useState("");
-	const [phone, setPhone] = useState("");
-	const [sex, setSex] = useState("");
-	const [age, setAge] = useState("");
-	const [facility, setFacility] = useState("");
+	const [number, setNumber] = useState();
+	const [city, setCity] = useState();
+	const [postalCode, setPostalCode] = useState();
+	const [amka, setAmka] = useState();
+	const [phone, setPhone] = useState();
+	const [sex, setSex] = useState();
+	const [age, setAge] = useState();
+	const [facility, setFacility] = useState();
+
+	const [showMissingValuesError, setShowMissignValuesError] = useState(false);
 
 	let navigate = useNavigate();
 
 	const addPatient = (e) => {
 		e.preventDefault();
 
-		setPatients();
-		navigate("/", { replace: true });
+		if (
+			!firstName ||
+			!lastName ||
+			!email ||
+			!street ||
+			!number ||
+			!city ||
+			!postalCode ||
+			!amka ||
+			!sex ||
+			!facility
+		) {
+			setShowMissignValuesError(true);
+		} else {
+			axiosInstance.post("patients", {
+				firstname: firstName,
+				lastname: lastName,
+				email,
+				facility_id: facility,
+				address_street: street,
+				address_number: number,
+				address_city: city,
+				address_postalcode: postalCode,
+				phonenumber: phone,
+				sex,
+				age,
+				amka,
+				ext_patient: true,
+			});
+
+			setPatients();
+			navigate("/", { replace: true });
+		}
 	};
 
 	return (
@@ -79,6 +99,12 @@ const AddPatient = ({ setPatients }) => {
 			<Title text="Add Patient" />
 
 			<form>
+				{showMissingValuesError && (
+					<h3 style={{ margin: "10px" }} className="red">
+						Please fill all the required fields.
+					</h3>
+				)}
+
 				<div className="group-items">
 					<InputBox
 						type="text"
@@ -197,7 +223,7 @@ const AddPatient = ({ setPatients }) => {
 							addPatient(e);
 						}}
 					>
-						Add Patient
+						Submit
 					</button>
 				</div>
 			</form>

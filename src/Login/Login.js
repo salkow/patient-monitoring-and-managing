@@ -46,7 +46,7 @@ const Login = () => {
 			<Title text="Login" />
 
 			{wrongCredentials && (
-				<h3 id="wrong-credentials">
+				<h3 className="red">
 					Incorrect username or password, please try again.
 				</h3>
 			)}
