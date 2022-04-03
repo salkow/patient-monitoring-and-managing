@@ -1,0 +1,143 @@
+.title {
+	text-align: center;
+	font-size: 3rem;
+}
+
+.center
+{
+	text-align: center;
+}
+
+.pt-5px {
+	padding-top: 5px;
+}
+
+.pt-6px {
+	padding-top: 6px;
+}
+
+.pt-12px {
+	padding-top: 12px;
+}
+
+.p-05rem {
+	padding: 0.5rem;
+}
+
+.p-1rem {
+	padding: 1rem;
+}
+
+.p-12px {
+	padding: 12px;
+}
+
+.pt-1rem {
+	padding-top: 1rem;
+}
+
+.pb-1rem {
+	padding-bottom: 1rem;
+}
+
+.pt-8px {
+	padding-top: 8px;
+}
+
+.pb-14px {
+	padding-bottom: 14px;
+}
+
+.mt-a {
+	margin-top: auto;
+}
+
+.ml-a {
+	margin-left: auto;
+}
+
+.ml-3px {
+	margin-left: 3px;
+}
+
+.mr-1rem {
+	margin-right: 1rem;
+}
+
+.mt-5px {
+	margin-top: 5px;
+}
+
+.m-1rem {
+	margin: 1rem;
+}
+
+.m-10px {
+	margin: 10px;
+}
+
+.mb-1rem {
+	margin-bottom: 1rem;
+}
+
+.mt-1rem {
+	margin-top: 1rem;
+}
+
+.bg-white {
+	background-color: white;
+}
+
+.white {
+	color: white;
+}
+
+.white::placeholder {
+	color: #93999e;
+}
+
+.grey {
+	color: #778088;
+}
+
+.bg-blue {
+	background-color: #137cbd;
+}
+
+.red {
+	color: #a8241d;
+}
+
+.bg-green-blue {
+	background-color: #30404d;
+}
+
+.bg-dark-green-blue {
+	background-color: #1b252b;
+}
+
+.w-8em
+{
+	width: 8em;
+}
+
+.button {
+	border-radius: 6px;
+	border-width: 0;
+	color: #fff;
+	cursor: pointer;
+	font-size: 100%;
+	height: 44px;
+	line-height: 1.15;
+	outline: none;
+	text-align: center;
+	width: 15vw;
+	min-width: 5rem;
+}
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+	outline: none;
+}

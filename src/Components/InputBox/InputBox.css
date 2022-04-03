@@ -1,0 +1,14 @@
+.input-container {
+	display: flex;
+	flex-direction: row;
+	position: relative;
+	border-radius: 5px;
+	overflow: hidden;
+	flex: 1;
+	min-width: 15em;
+    outline-width: 0;
+}
+.input-item {
+	border: 0;
+	flex: 1;
+}

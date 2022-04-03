@@ -1,0 +1,41 @@
+.all-patient-card {
+	box-sizing: border-box;
+	width: 20rem;
+	height: 19.5rem;
+	color: white;
+
+	border-width: 0;
+	
+	display: flex;
+	justify-content: top;
+	flex-direction: column;
+}
+
+.rounded-corners
+{
+	border-radius: 15px;
+}
+
+
+.all-patient-card-icon {
+	top: 6px;
+	position: relative;
+}
+
+.patient-card-key {
+	color: #93999e;
+}
+
+.patient-card-line {
+	border: 1px solid grey;
+	width: 100%;
+}
+
+.center-text {
+	text-align: center;
+}
+
+.bottom-right {
+	display: flex;
+    justify-content: flex-end;
+}

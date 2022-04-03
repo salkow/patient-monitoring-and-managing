@@ -1,0 +1,37 @@
+#nav {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	height: 3em;
+}
+
+.point-cursor {
+	cursor: pointer;
+}
+
+.small-button {
+	border-radius: 6px;
+	border-width: 0;
+	color: #fff;
+	cursor: pointer;
+	font-size: 100%;
+	outline: none;
+	text-align: center;
+	min-width: 5rem;
+
+	width: 4rem;
+}
+
+.hide-when-small {
+	display: none;
+}
+
+@media screen and (min-width: 30em) {
+	.small-button {
+		width: 7rem;
+	}
+
+	.hide-when-small {
+		display:unset;
+	}
+}

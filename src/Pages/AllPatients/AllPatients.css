@@ -1,0 +1,20 @@
+.all-patient-cards {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+
+.add-patient-container {
+	display: flex;
+	justify-content: center;
+}
+
+.no-u
+{
+	text-decoration: none;	
+}
+
+.hide
+{
+	display: none;	
+}

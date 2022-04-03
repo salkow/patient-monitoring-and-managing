@@ -1,35 +1,42 @@
-import AllPatients from "./AllPatients/AllPatients.js";
-import Patient from "./Patient/Patient.js";
-import Login from "./Login/Login.js";
-import AddPatient from "./AddPatient/AddPatient.js";
-import Navbar from "./Navbar/Navbar.js";
+import AllPatients from "./Pages/AllPatients/AllPatients.js";
+import Patient from "./Pages/Patient/Patient.js";
+import Login from "./Pages/Login/Login.js";
+import AddPatient from "./Pages/AddPatient/AddPatient.js";
+import Navbar from "./Components/Navbar/Navbar.js";
+
+import "./Common.css";
 
 import { useState } from "react";
 
-import { Routes, Route, BrowserRouter, useLocation } from "react-router-dom";
+import { Routes, Route, BrowserRouter } from "react-router-dom";
 
 function App() {
 	const [patients, setPatients] = useState();
 
+	document.body.style = "background: #202B33;color: white;";
+
 	return (
 		<BrowserRouter>
-			{window.location.pathname !== "/login" && <Navbar />}
 			<Routes>
+				<Route element={<Navbar />}>
+					<Route
+						path="/"
+						element={
+							<AllPatients
+								patients={patients}
+								setPatients={setPatients}
+							/>
+						}
+					/>
+
+					<Route
+						path="/add-patient"
+						element={<AddPatient setPatients={setPatients} />}
+					/>
+
+					<Route path="/patient/:id" element={<Patient />} />
+				</Route>
 				<Route path="/login" element={<Login />} />
-				<Route
-					path="/"
-					element={
-						<AllPatients
-							patients={patients}
-							setPatients={setPatients}
-						/>
-					}
-				/>
-				<Route path="/patient/:id" element={<Patient />} />
-				<Route
-					path="/add-patient"
-					element={<AddPatient setPatients={setPatients} />}
-				/>
 			</Routes>
 		</BrowserRouter>
 	);
